@@ -46,22 +46,22 @@
 }
 
 .black {
-  background-color: rgb(146, 56, 56);
+  background-color: rgb(156, 99, 13);
 }
 
 .white {
-  background-color: rgb(153, 151, 151);
+  background-color: rgb(190, 190, 190);
 }
 
 .selected {
-  background-color: rgb(2, 95, 2);
+  background-color: rgb(0, 99, 0);
 }
 
 .available {
   height: 12px;
   width: 12px;
   border-radius: 50%;
-  background-color: rgba(2, 95, 2, 0.205);
+  background-color: rgba(41, 41, 41, 0.459);
   transition: all 0.2s ease-out;
   cursor: pointer;
   &:hover {

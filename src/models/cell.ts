@@ -44,6 +44,7 @@ export class Cell {
     }
     return true;
   }
+
   isEmptyHorizontal(target: Cell): boolean {
     if (this.y !== target.y) {
       return false;
