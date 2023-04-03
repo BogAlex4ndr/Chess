@@ -8,8 +8,8 @@ interface TimerProps {
 }
 
 const Timer: FC<TimerProps> = ({ currentPlayer, restart }) => {
-  const [blackTime, setBlackTime] = useState(30);
-  const [WhiteTime, setWhiteTime] = useState(30);
+  const [blackTime, setBlackTime] = useState(300);
+  const [WhiteTime, setWhiteTime] = useState(300);
   const [gameOver, setGameOver] = useState(false);
   const timer = useRef<null | ReturnType<typeof setInterval>>(null);
 
@@ -39,8 +39,8 @@ const Timer: FC<TimerProps> = ({ currentPlayer, restart }) => {
   };
 
   const handleRestart = () => {
-    setWhiteTime(3);
-    setBlackTime(3);
+    setWhiteTime(300);
+    setBlackTime(300);
     restart();
   };
   return (
