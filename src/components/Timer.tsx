@@ -8,13 +8,20 @@ interface TimerProps {
 }
 
 const Timer: FC<TimerProps> = ({ currentPlayer, restart }) => {
-  const [blackTime, setBlackTime] = useState(300);
-  const [WhiteTime, setWhiteTime] = useState(300);
+  const [blackTime, setBlackTime] = useState(30);
+  const [WhiteTime, setWhiteTime] = useState(30);
+  const [gameOver, setGameOver] = useState(false);
   const timer = useRef<null | ReturnType<typeof setInterval>>(null);
 
   useEffect(() => {
     startTimer();
-  }, [currentPlayer]);
+    if (blackTime < 0) {
+      setGameOver(true);
+    }
+    if (WhiteTime < 0) {
+      setGameOver(true);
+    }
+  }, [currentPlayer, blackTime, WhiteTime]);
 
   const startTimer = () => {
     if (timer.current) {
@@ -32,14 +39,16 @@ const Timer: FC<TimerProps> = ({ currentPlayer, restart }) => {
   };
 
   const handleRestart = () => {
-    setWhiteTime(300);
-    setBlackTime(300);
+    setWhiteTime(3);
+    setBlackTime(3);
     restart();
   };
   return (
-    <div>
+    <div className='timer'>
       <div>
-        <button onClick={handleRestart}>Restart</button>
+        <button className='restartButton' onClick={handleRestart}>
+          Restart
+        </button>
       </div>
       <h2>Black - {blackTime}</h2>
       <h2>White - {WhiteTime}</h2>

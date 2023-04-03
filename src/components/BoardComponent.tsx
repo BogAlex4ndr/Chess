@@ -37,21 +37,40 @@ const BoardComponent: FC<BoardProps> = ({ board, setBoard, currentPlayer, swapPl
     const newBoard = board.getCopyBoard();
     setBoard(newBoard);
   };
+
+  const numbersArr = [8, 7, 6, 5, 4, 3, 2, 1];
+  const lettersArr = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h'];
   return (
     <div>
-      <h3>current player {currentPlayer?.color}</h3>
-      <div className='board'>
-        {board.cells.map((row, index) => (
-          <React.Fragment key={index}>
-            {row.map((cell) => (
-              <CellComponent
-                click={click}
-                cell={cell}
-                key={cell.id}
-                selected={cell.x === selectedCell?.x && cell.y === selectedCell?.y}
-              />
-            ))}
-          </React.Fragment>
+      <h3> {currentPlayer?.color.toUpperCase()} Move</h3>
+      <div style={{ display: 'flex' }}>
+        <div className='numbersArr'>
+          {numbersArr.map((num, index) => (
+            <div className='numbers' key={index}>
+              {num}
+            </div>
+          ))}
+        </div>
+        <div className='board'>
+          {board.cells.map((row, index) => (
+            <React.Fragment key={index}>
+              {row.map((cell) => (
+                <CellComponent
+                  click={click}
+                  cell={cell}
+                  key={cell.id}
+                  selected={cell.x === selectedCell?.x && cell.y === selectedCell?.y}
+                />
+              ))}
+            </React.Fragment>
+          ))}
+        </div>
+      </div>
+      <div className='letterArr'>
+        {lettersArr.map((leter, index) => (
+          <div className='letters' key={index}>
+            {leter}
+          </div>
         ))}
       </div>
     </div>
